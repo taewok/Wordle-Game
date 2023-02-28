@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect } from "react";
-import Component from "./component/Component.tsx";
 
 function App() {
   // useEffect(() => {
@@ -8,12 +7,7 @@ function App() {
   //     console.log(res.data);
   //   });
   // });
-  return (
-    <div className="App">
-      <Component>
-      </Component>
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;

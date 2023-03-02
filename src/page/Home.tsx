@@ -6,8 +6,8 @@ const Home = () => {
   return (
     <Container>
       <Title>
-        <p>영어 명언으로 단어 퀴즈</p>
-        <span>Word quiz with English sayings</span>
+        <p>영어 단어 퀴즈</p>
+        <span>english word quiz</span>
         <StartBtn>
           <Link to={`/quiz`}>시작하기</Link>
         </StartBtn>

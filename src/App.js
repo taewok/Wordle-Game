@@ -1,13 +1,11 @@
-import axios from "axios";
-import { useEffect } from "react";
+import Router from "./Router";
 
 function App() {
-  // useEffect(() => {
-  //   axios.get(`	https://api.adviceslip.com/advice`).then((res) => {
-  //     console.log(res.data);
-  //   });
-  // });
-  return <div className="App"></div>;
+  return (
+    <>
+      <Router />
+    </>
+  );
 }
 
 export default App;

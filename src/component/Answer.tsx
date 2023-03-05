@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { isNumberObject } from "util/types";
 
 type InfoProps = {
   word: string;
@@ -11,14 +10,13 @@ const Answer = ({ word }: InfoProps) => {
     e.preventDefault();
     console.log(e.target);
 
-    const input = document.querySelector(".input") as HTMLElement;
-      for (let i:number = 0; i < 5; i++) {
-        console.log(e.target[i].value);
-        console.log(word[i]);
-        if (e.target[i].value === word[i]) {
-        //   input[i:].style.background="green";
-        }
-      }
+    const input = document.querySelectorAll(".input");
+    for (let i: number = 0; i < 5; i++) {
+      if (e.target[i].value === word[i]) (input[i] as HTMLElement).style.background = "green";
+      else if (word.includes(e.target[i].value)) (input[i] as HTMLElement).style.background = "yellow";
+      else (input[i] as HTMLElement).style.background = "gray";
+      input[i].classList.remove(`input`);
+    }
   };
 
   return (

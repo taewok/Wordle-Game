@@ -12,20 +12,32 @@ const Answer = ({ word }: InfoProps) => {
 
     const input = document.querySelectorAll(".input");
     for (let i: number = 0; i < 5; i++) {
-      if (e.target[i].value === word[i]) (input[i] as HTMLElement).style.background = "green";
-      else if (word.includes(e.target[i].value)) (input[i] as HTMLElement).style.background = "yellow";
+      if (e.target[i].value === word[i])
+        (input[i] as HTMLElement).style.background = "green";
+      else if (word.includes(e.target[i].value))
+        (input[i] as HTMLElement).style.background = "yellow";
       else (input[i] as HTMLElement).style.background = "gray";
       input[i].classList.remove(`input`);
     }
   };
 
+  const onWordInput = (): any => {
+    const input = document.querySelectorAll(".input");
+    for (let i = 0; i < input.length; i++) {
+      if ((input[i] as HTMLInputElement).value.length > 0) {
+        (input[i + 1] as HTMLInputElement).focus();
+        break;
+      }
+    }
+  };
+
   return (
     <AnswerForm onSubmit={(e) => onSubmit(e)}>
-      <Input maxLength={1} className="input" />
-      <Input maxLength={1} className="input" />
-      <Input maxLength={1} className="input" />
-      <Input maxLength={1} className="input" />
-      <Input maxLength={1} className="input" />
+      <Input maxLength={1} className="input" onChange={() => onWordInput()} />
+      <Input maxLength={1} className="input" onChange={() => onWordInput()} />
+      <Input maxLength={1} className="input" onChange={() => onWordInput()} />
+      <Input maxLength={1} className="input" onChange={() => onWordInput()} />
+      <Input maxLength={1} className="input" onChange={() => onWordInput()} />
       <button type="submit">dfsfd</button>
     </AnswerForm>
   );
@@ -34,7 +46,7 @@ const Answer = ({ word }: InfoProps) => {
 const AnswerForm = styled.form`
   display: grid;
   justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 15px;
   padding: 7.5px 0px;
   width: 100%;

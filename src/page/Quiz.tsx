@@ -21,16 +21,31 @@ const Quiz = () => {
     getEnglishWord();
   }, []);
 
+  const onSubmit = (e: any) => {
+    e.preventDefault();
+    console.log(e.target);
+
+    const input = document.querySelectorAll(".input");
+    for (let i: number = 0; i < 5; i++) {
+      if (e.target[i].value === word[i])
+        (input[i] as HTMLElement).style.background = "#86E57F";
+      else if (word.includes(e.target[i].value))
+        (input[i] as HTMLElement).style.background = "#FFE400";
+      else (input[i] as HTMLElement).style.background = "#BDBDBD";
+      input[i].classList.remove(`input`);
+    }
+  };
+
   return (
     <Container>
       <Wrap>
-        <Question/>
-        <Answer word={word}/>
-        <Answer word={word}/>
-        <Answer word={word}/>
-        <Answer word={word}/>
-        <Answer word={word}/>
-        <Answer word={word}/>
+        <Question />
+        <Answer word={word} onSubmit={onSubmit} />
+        <Answer word={word} onSubmit={onSubmit} />
+        <Answer word={word} onSubmit={onSubmit} />
+        <Answer word={word} onSubmit={onSubmit} />
+        <Answer word={word} onSubmit={onSubmit} />
+        <Answer word={word} onSubmit={onSubmit} />
       </Wrap>
     </Container>
   );

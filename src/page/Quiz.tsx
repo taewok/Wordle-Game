@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Answer from "../component/quiz/Answer";
+import Answer from "../component/Answer";
+import Question from "../component/Question";
 
 const Quiz = () => {
   const [word, setWord] = useState<string>("");
@@ -23,6 +24,7 @@ const Quiz = () => {
   return (
     <Container>
       <Wrap>
+        <Question/>
         <Answer word={word}/>
         <Answer word={word}/>
         <Answer word={word}/>
@@ -35,13 +37,11 @@ const Quiz = () => {
 };
 
 const Container = styled.div`
-  width: 50vh;
-  height: 100%;
+  width: 55vh;
 `;
 const Wrap = styled.div`
-  padding-top: 8vh;
+  margin-top: 8vh;
   width: 100%;
-  height: 100%;
 `;
 
 export default Quiz;

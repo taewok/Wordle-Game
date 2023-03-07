@@ -1,50 +1,83 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 type InfoProps = {
   word: string;
+  onSubmit: any;
 };
 
-const Answer = ({ word }: InfoProps) => {
-  const onSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(e.target);
-
-    const input = document.querySelectorAll(".input");
-    for (let i: number = 0; i < 5; i++) {
-      if (e.target[i].value === word[i])
-        (input[i] as HTMLElement).style.background = "green";
-      else if (word.includes(e.target[i].value))
-        (input[i] as HTMLElement).style.background = "yellow";
-      else (input[i] as HTMLElement).style.background = "gray";
-      input[i].classList.remove(`input`);
-    }
-  };
-
+const Answer = ({ word, onSubmit }: InfoProps) => {
   const onWordInput = (): any => {
-    const input = document.querySelectorAll(".input");
+    const input: NodeListOf<HTMLInputElement> = document.querySelectorAll(".input");
     for (let i = 0; i < input.length; i++) {
-      if ((input[i] as HTMLInputElement).value.length > 0) {
-        (input[i + 1] as HTMLInputElement).focus();
-        break;
+      if (input[i].value.length > 0) {
+        input[i + 1].focus();
+        continue;
       }
     }
   };
 
   return (
     <AnswerForm onSubmit={(e) => onSubmit(e)}>
-      <Input maxLength={1} className="input" onChange={() => onWordInput()} />
-      <Input maxLength={1} className="input" onChange={() => onWordInput()} />
-      <Input maxLength={1} className="input" onChange={() => onWordInput()} />
-      <Input maxLength={1} className="input" onChange={() => onWordInput()} />
-      <Input maxLength={1} className="input" onChange={() => onWordInput()} />
-      <button type="submit">dfsfd</button>
+      <Input
+        minLength={1}
+        maxLength={1}
+        className="input"
+        onChange={() => onWordInput()}
+        required
+      />
+      <Input
+        minLength={1}
+        maxLength={1}
+        className="input"
+        onChange={() => onWordInput()}
+        required
+      />
+      <Input
+        minLength={1}
+        maxLength={1}
+        className="input"
+        onChange={() => onWordInput()}
+        required
+      />
+      <Input
+        minLength={1}
+        maxLength={1}
+        className="input"
+        onChange={() => onWordInput()}
+        required
+      />
+      <Input
+        minLength={1}
+        maxLength={1}
+        className="input"
+        onChange={() => onWordInput()}
+        required
+      />
+      <AnswerBtn
+        type="submit"
+        onClick={(e) => {
+          console.log(e);
+        }}
+      >
+        도전
+      </AnswerBtn>
     </AnswerForm>
   );
 };
 
+const BigAndSmall = keyframes`
+  0%{
+    scale: 1.2;
+  }
+  100%{
+    scale: 1;
+  }
+`;
+
 const AnswerForm = styled.form`
   display: grid;
+  align-items: center;
   justify-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 15px;
@@ -58,6 +91,15 @@ const Input = styled.input`
   border-radius: 15px;
   text-align: center;
   font-size: 3rem;
+  cursor: pointer;
+  &:valid {
+    animation: ${BigAndSmall} 0.5s forwards;
+  }
+`;
+const AnswerBtn = styled.button`
+  width: 100%;
+  height: 50%;
+  border-radius: 15px;
   cursor: pointer;
 `;
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 
 const Question = () => {
-  const [explain, setExplain] = useState<boolean>(false);
+  const [explain, setExplain] = useState<boolean>(true);
 
   const explainOnClick = (): any => {
     setExplain(!explain);
@@ -102,6 +102,7 @@ const XBtn = styled.button`
   background-color: transparent;
   border: none;
   color: black;
+  font-weight: bold;
   cursor: pointer;
 `;
 

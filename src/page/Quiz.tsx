@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Answer from "../component/Answer";
+import KeyBoard from "../component/KeyBoard";
 import Question from "../component/Question";
 
 const Quiz = () => {
   const [word, setWord] = useState<string>("");
-  const [korean, setKorean] = useState<string>("");
 
   //단어를 랜덤으로 뽑아 word에 담는다
   useEffect(() => {
@@ -25,13 +25,13 @@ const Quiz = () => {
     e.preventDefault();
     console.log(e.target);
 
-    const input = document.querySelectorAll(".input");
+    const input: NodeListOf<HTMLInputElement> =
+      document.querySelectorAll(".input");
     for (let i: number = 0; i < 5; i++) {
-      if (e.target[i].value === word[i])
-        (input[i] as HTMLElement).style.background = "#86E57F";
+      if (e.target[i].value === word[i]) input[i].style.background = "#86E57F";
       else if (word.includes(e.target[i].value))
-        (input[i] as HTMLElement).style.background = "#FFE400";
-      else (input[i] as HTMLElement).style.background = "#BDBDBD";
+        input[i].style.background = "#FFE400";
+      else input[i].style.background = "#BDBDBD";
       input[i].classList.remove(`input`);
     }
   };
@@ -47,15 +47,19 @@ const Quiz = () => {
         <Answer word={word} onSubmit={onSubmit} />
         <Answer word={word} onSubmit={onSubmit} />
       </Wrap>
+      <KeyBoard />
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: 55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40vw;
+  height: 100%;
 `;
 const Wrap = styled.div`
-  margin-top: 8vh;
   width: 100%;
 `;
 

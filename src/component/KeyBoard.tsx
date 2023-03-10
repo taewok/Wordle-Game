@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { MdOutlineBackspace } from "react-icons/md";
 
-const KeyBoard = () => {
+type InfoProps = {
+  word: string;
+};
+
+const KeyBoard = ({ word }: InfoProps) => {
   const firstKeyList = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const secondKeyList = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const thirdKeyList = ["Z", "X", "C", "V", "B", "N", "M"];
@@ -13,6 +18,41 @@ const KeyBoard = () => {
     for (let i = 0; i < input.length; i++) {
       if (input[i].value === "") {
         input[i].value = value;
+        break;
+      }
+    }
+  };
+
+  //삭제 버튼을 누르면 가장 앞번호에 input 부터 값이 삭제
+  const deleteBtnOnClick = () => {
+    const input: NodeListOf<HTMLInputElement> =
+      document.querySelectorAll(".input");
+    for (let i = 0; i < 5; i++) {
+      console.log(input[i]);
+    }
+    for (let i = input.length - 1; i >= 0; i--) {
+      if (input[i].value !== "") {
+        input[i].value = "";
+        break;
+      }
+    }
+  };
+
+  //enter 버튼을 누르면 현재 줄에 input들의 값을 검사하고 그에 따른 색을 바꾼다
+  const enterBtnOnClick = () => {
+    const input: NodeListOf<HTMLInputElement> =
+      document.querySelectorAll(".input");
+    const form: NodeListOf<HTMLElement> = document.querySelectorAll(".form");
+    for (let i: number = 0; i < 5; i++) {
+      if (input[i].value !== "") {
+        if (input[i].value === word[i]) input[i].style.background = "#86E57F";
+        else if (word.includes(input[i].value))
+          input[i].style.background = "#FFE400";
+        else input[i].style.background = "#BDBDBD";
+        input[i].classList.remove(`input`);
+      } else {
+        form[0].classList.add("active");
+        setTimeout(() => form[0].classList.remove("active"), 500);
         break;
       }
     }
@@ -36,11 +76,15 @@ const KeyBoard = () => {
           ))}
         </Second>
         <Third>
+          <EnterBtn onClick={() => enterBtnOnClick()}>Enter</EnterBtn>
           {thirdKeyList.map((value) => (
             <KeyItem onClick={() => keyBoardOnClick(value)} key={value}>
               {value}
             </KeyItem>
           ))}
+          <DeleteBtn onClick={() => deleteBtnOnClick()}>
+            <MdOutlineBackspace />
+          </DeleteBtn>
         </Third>
       </KeyList>
     </Container>
@@ -69,5 +113,13 @@ const First = styled.div`
 `;
 const Second = styled(First)``;
 const Third = styled(First)``;
+
+const EnterBtn = styled(KeyItem)`
+  width: 120px;
+`;
+const DeleteBtn = styled(EnterBtn)`
+  width: 120px;
+  font-size: 3rem;
+`;
 
 export default KeyBoard;

@@ -43,17 +43,22 @@ const KeyBoard = ({ word }: InfoProps) => {
     const input: NodeListOf<HTMLInputElement> =
       document.querySelectorAll(".input");
     const form: NodeListOf<HTMLElement> = document.querySelectorAll(".form");
+    let array: any[] = [];
     for (let i: number = 0; i < 5; i++) {
-      if (input[i].value !== "") {
+      array[i] = input[i].value;
+    }
+    //5칸 이하에 알파벳이 입력되어 있을 떄
+    if (array.join("").length < 5) {
+      form[0].classList.add("active");
+      setTimeout(() => form[0].classList.remove("active"), 500);
+    } else {
+      for (let i: number = 0; i < 5; i++) {
         if (input[i].value === word[i]) input[i].style.background = "#86E57F";
         else if (word.includes(input[i].value))
           input[i].style.background = "#FFE400";
         else input[i].style.background = "#BDBDBD";
+        form[0].classList.remove("form");
         input[i].classList.remove(`input`);
-      } else {
-        form[0].classList.add("active");
-        setTimeout(() => form[0].classList.remove("active"), 500);
-        break;
       }
     }
   };

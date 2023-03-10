@@ -53,10 +53,14 @@ const KeyBoard = ({ word }: InfoProps) => {
       setTimeout(() => form[0].classList.remove("active"), 500);
     } else {
       for (let i: number = 0; i < 5; i++) {
-        if (input[i].value === word[i]) input[i].style.background = "#86E57F";
-        else if (word.includes(input[i].value))
+        const key: any = document.querySelector(`#${input[i].value}`);
+        if (input[i].value === word[i]) {
+          key.style.background = "#86E57F";
+          input[i].style.background = "#86E57F";
+        } else if (word.includes(input[i].value)) {
+          key.style.background = "#FFE400";
           input[i].style.background = "#FFE400";
-        else input[i].style.background = "#BDBDBD";
+        } else input[i].style.background = "#BDBDBD";
         form[0].classList.remove("form");
         input[i].classList.remove(`input`);
       }
@@ -68,14 +72,22 @@ const KeyBoard = ({ word }: InfoProps) => {
       <KeyList>
         <First>
           {firstKeyList.map((value) => (
-            <KeyItem onClick={() => keyBoardOnClick(value)} key={value}>
+            <KeyItem
+              onClick={() => keyBoardOnClick(value)}
+              key={value}
+              id={value}
+            >
               {value}
             </KeyItem>
           ))}
         </First>
         <Second>
           {secondKeyList.map((value) => (
-            <KeyItem onClick={() => keyBoardOnClick(value)} key={value}>
+            <KeyItem
+              onClick={() => keyBoardOnClick(value)}
+              key={value}
+              id={value}
+            >
               {value}
             </KeyItem>
           ))}
@@ -83,7 +95,11 @@ const KeyBoard = ({ word }: InfoProps) => {
         <Third>
           <EnterBtn onClick={() => enterBtnOnClick()}>Enter</EnterBtn>
           {thirdKeyList.map((value) => (
-            <KeyItem onClick={() => keyBoardOnClick(value)} key={value}>
+            <KeyItem
+              onClick={() => keyBoardOnClick(value)}
+              key={value}
+              id={value}
+            >
               {value}
             </KeyItem>
           ))}

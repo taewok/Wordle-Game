@@ -14,7 +14,7 @@ const Answer = () => {
   };
 
   return (
-    <AnswerForm>
+    <AnswerForm className="form">
       <Input
         minLength={1}
         maxLength={1}
@@ -62,6 +62,29 @@ const BigAndSmall = keyframes`
     scale: 1;
   }
 `;
+const LeftAndRight = keyframes`
+  0%{
+    transform: translateX(-15px);
+  }
+  20%{
+    transform: translateX(15px);
+  }
+  40%{
+    transform: translateX(-15px);
+  }
+  55%{
+    transform: translateX(15px);
+  }
+  75%{
+    transform: translateX(-15px);
+  }
+  85%{
+    transform: translateX(15px);
+  }
+  100%{
+    transform: translateX(0);
+  }
+`;
 
 const AnswerForm = styled.form`
   display: grid;
@@ -72,6 +95,9 @@ const AnswerForm = styled.form`
   gap: 15px;
   padding: 7.5px 0px;
   width: 100%;
+  .active {
+    animation: ${LeftAndRight} 0.5s ease-in-out;
+  }
 `;
 const Input = styled.input`
   width: 100%;

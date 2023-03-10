@@ -95,8 +95,8 @@ const AnswerForm = styled.form`
   gap: 15px;
   padding: 7.5px 0px;
   width: 100%;
-  .active {
-    animation: ${LeftAndRight} 0.5s ease-in-out;
+  &.active {
+    animation: ${LeftAndRight} 0.3s ease-in-out;
   }
 `;
 const Input = styled.input`

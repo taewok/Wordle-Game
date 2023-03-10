@@ -1,12 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-type InfoProps = {
-  word: string;
-  onSubmit: any;
-};
-
-const Answer = ({ word, onSubmit }: InfoProps) => {
+const Answer = () => {
   const onWordInput = (): any => {
     const input: NodeListOf<HTMLInputElement> =
       document.querySelectorAll(".input");
@@ -19,7 +14,7 @@ const Answer = ({ word, onSubmit }: InfoProps) => {
   };
 
   return (
-    <AnswerForm onSubmit={(e) => onSubmit(e)}>
+    <AnswerForm>
       <Input
         minLength={1}
         maxLength={1}
@@ -55,7 +50,6 @@ const Answer = ({ word, onSubmit }: InfoProps) => {
         onChange={() => onWordInput()}
         required
       />
-      <AnswerBtn type="submit">도전</AnswerBtn>
     </AnswerForm>
   );
 };
@@ -74,7 +68,7 @@ const AnswerForm = styled.form`
   align-items: center;
   justify-items: center;
   justify-content: center;
-  grid-template-columns: repeat(6, 7vh);
+  grid-template-columns: repeat(5, 7vh);
   gap: 15px;
   padding: 7.5px 0px;
   width: 100%;
@@ -91,12 +85,6 @@ const Input = styled.input`
     border: 3px solid black;
     animation: ${BigAndSmall} 0.5s forwards;
   }
-`;
-const AnswerBtn = styled.button`
-  width: 100%;
-  height: 50%;
-  border-radius: 15px;
-  cursor: pointer;
 `;
 
 export default Answer;

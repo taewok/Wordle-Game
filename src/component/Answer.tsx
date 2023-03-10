@@ -82,12 +82,13 @@ const AnswerForm = styled.form`
 const Input = styled.input`
   width: 100%;
   aspect-ratio: auto 1/1;
-  border: 3px solid black;
+  border: 3px solid #d3d6da;
   border-radius: 5px;
   text-align: center;
   font-size: 3rem;
   cursor: pointer;
   &:valid {
+    border: 3px solid black;
     animation: ${BigAndSmall} 0.5s forwards;
   }
 `;

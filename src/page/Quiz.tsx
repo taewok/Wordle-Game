@@ -14,40 +14,35 @@ const Quiz = () => {
       axios
         .get(`https://random-word-api.herokuapp.com/word?length=5`)
         .then((res) => {
-          console.log(res.data);
-          setWord(res.data[0]);
+          console.log(
+            res.data[0]
+              .split("")
+              .map((str: string) => str.toUpperCase())
+              .join("")
+          );
+          setWord(
+            res.data[0]
+              .split("")
+              .map((str: string) => str.toUpperCase())
+              .join("")
+          );
         });
     };
     getEnglishWord();
   }, []);
 
-  const onSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(e.target);
-
-    const input: NodeListOf<HTMLInputElement> =
-      document.querySelectorAll(".input");
-    for (let i: number = 0; i < 5; i++) {
-      if (e.target[i].value === word[i]) input[i].style.background = "#86E57F";
-      else if (word.includes(e.target[i].value))
-        input[i].style.background = "#FFE400";
-      else input[i].style.background = "#BDBDBD";
-      input[i].classList.remove(`input`);
-    }
-  };
-
   return (
     <Container>
       <Wrap>
         <Question />
-        <Answer word={word} onSubmit={onSubmit} />
-        <Answer word={word} onSubmit={onSubmit} />
-        <Answer word={word} onSubmit={onSubmit} />
-        <Answer word={word} onSubmit={onSubmit} />
-        <Answer word={word} onSubmit={onSubmit} />
-        <Answer word={word} onSubmit={onSubmit} />
+        <Answer />
+        <Answer />
+        <Answer />
+        <Answer />
+        <Answer />
+        <Answer />
       </Wrap>
-      <KeyBoard />
+      <KeyBoard word={word} />
     </Container>
   );
 };

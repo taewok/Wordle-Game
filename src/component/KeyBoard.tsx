@@ -112,7 +112,11 @@ const KeyBoard = ({ word }: InfoProps) => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+`;
 const KeyList = styled.ul``;
 const KeyItem = styled.ol`
   display: flex;
@@ -120,12 +124,19 @@ const KeyItem = styled.ol`
   align-items: center;
   margin: 8px 5px;
   width: 70px;
-  height: 90px;
+  aspect-ratio: 2/2;
   background-color: #cacaca;
   border-radius: 15px;
   color: #303030;
   font-size: 2rem;
   cursor: pointer;
+  @media screen and (max-width: 767px) {
+    margin: 5px 3px;
+    width: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    font-size: 1.5rem;
+  }
 `;
 
 const First = styled.div`
@@ -136,11 +147,18 @@ const Second = styled(First)``;
 const Third = styled(First)``;
 
 const EnterBtn = styled(KeyItem)`
-  width: 120px;
+  width: 100px;
+  aspect-ratio: 1/0.5;
+  @media screen and (max-width: 767px) {
+    aspect-ratio: 1/0.5;
+  }
 `;
 const DeleteBtn = styled(EnterBtn)`
   width: 120px;
   font-size: 3rem;
+  @media screen and (max-width: 767px) {
+    font-size: 2rem;
+  }
 `;
 
 export default KeyBoard;

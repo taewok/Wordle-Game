@@ -17,6 +17,9 @@ const GlobalStyle = createGlobalStyle`
         height:100vh;
         background-color: #E8F3D6;
         font-family: "BMJUA";
+        @media screen and (max-width: 767px) {
+            width: 100vw;
+        }
     }
     a {
         text-decoration: none;

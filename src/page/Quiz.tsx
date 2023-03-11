@@ -53,8 +53,14 @@ const Container = styled.div`
   align-items: center;
   width: 40vw;
   height: 100%;
+  @media screen and (max-width: 767px) {
+    width: 100vw;
+  }
 `;
 const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 `;
 

@@ -91,12 +91,16 @@ const AnswerForm = styled.form`
   align-items: center;
   justify-items: center;
   justify-content: center;
-  grid-template-columns: repeat(5, 7vh);
-  gap: 15px;
-  padding: 7.5px 0px;
+  grid-template-columns: repeat(5, 8vh);
+  gap: 10px;
+  padding: 3px 0px;
   width: 100%;
   &.active {
     animation: ${LeftAndRight} 0.3s ease-in-out;
+  }
+  @media screen and (max-width: 767px) {
+    grid-template-columns: repeat(5, 7vh);
+    width: 100%;
   }
 `;
 const Input = styled.input`
@@ -110,6 +114,9 @@ const Input = styled.input`
   &:valid {
     border: 3px solid black;
     animation: ${BigAndSmall} 0.5s forwards;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 2.5rem;
   }
 `;
 

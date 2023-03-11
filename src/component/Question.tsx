@@ -90,6 +90,11 @@ const Explain = styled.div`
   h3 {
     text-align: center;
   }
+  @media screen and (max-width: 767px) {
+    width: 80vw;
+    padding: 15px 10px 45px 10px;
+    font-size: 1.2rem;
+  }
 `;
 const XBtnDiv = styled.div`
   display: flex;
@@ -129,7 +134,7 @@ const ExampleItem = styled.ol`
   align-items: center;
   margin-right: 10px;
   width: 50px;
-  height: 50px;
+  aspect-ratio: auto 1/1;
   border: 3px solid black;
   border-radius: 15px;
   font-size: 2rem;

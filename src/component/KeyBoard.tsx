@@ -60,7 +60,10 @@ const KeyBoard = ({ word }: InfoProps) => {
         } else if (word.includes(input[i].value)) {
           key.style.background = "#FFE400";
           input[i].style.background = "#FFE400";
-        } else input[i].style.background = "#BDBDBD";
+        } else {
+          key.style.background = "#7c7c7c";
+          input[i].style.background = "#BDBDBD";
+        }
         form[0].classList.remove("form");
         input[i].classList.remove(`input`);
       }

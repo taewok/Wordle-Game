@@ -21,6 +21,7 @@ const Answer = () => {
         className="input"
         onChange={() => onWordInput()}
         required
+        disabled
       />
       <Input
         minLength={1}
@@ -28,6 +29,7 @@ const Answer = () => {
         className="input"
         onChange={() => onWordInput()}
         required
+        disabled
       />
       <Input
         minLength={1}
@@ -35,6 +37,7 @@ const Answer = () => {
         className="input"
         onChange={() => onWordInput()}
         required
+        disabled
       />
       <Input
         minLength={1}
@@ -42,6 +45,7 @@ const Answer = () => {
         className="input"
         onChange={() => onWordInput()}
         required
+        disabled
       />
       <Input
         minLength={1}
@@ -49,6 +53,7 @@ const Answer = () => {
         className="input"
         onChange={() => onWordInput()}
         required
+        disabled
       />
     </AnswerForm>
   );
@@ -106,6 +111,7 @@ const AnswerForm = styled.form`
 const Input = styled.input`
   width: 100%;
   aspect-ratio: auto 1/1;
+  background-color: white;
   border: 3px solid #d3d6da;
   border-radius: 5px;
   text-align: center;

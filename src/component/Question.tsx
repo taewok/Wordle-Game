@@ -13,55 +13,58 @@ const Question = () => {
     <Container>
       <AiOutlineQuestionCircle onClick={() => explainOnClick()} />
       {explain && (
-        <Explain>
-          <XBtnDiv>
-            <XBtn onClick={() => explainOnClick()}>X</XBtn>
-          </XBtnDiv>
-          <h3>게임 설명</h3>
-          <ExplainList>
-            <ExplainItem>1. 기회는 총 6번!!!</ExplainItem>
-            <ExplainItem>
-              2. 타일 색깔에 따른 추측 가능
-              <p>
-                알파벳이 정답 단어에 들어가고 순서까지 일치하면{" "}
-                <PointSpan color="#59bb52">녹색</PointSpan>
-              </p>
-              <ExampleList>
-                <ExampleItem color="#86E57F">a</ExampleItem>
-                <ExampleItem>p</ExampleItem>
-                <ExampleItem>p</ExampleItem>
-                <ExampleItem>l</ExampleItem>
-                <ExampleItem>e</ExampleItem>
-              </ExampleList>
-            </ExplainItem>
-            <ExplainItem>
-              <p>
-                알파벳이 정답 단어에는 들어가지만 순서가 틀리면{" "}
-                <PointSpan color="#eeff00">노란색</PointSpan>
-              </p>
-              <ExampleList>
-                <ExampleItem color="#FFE400">a</ExampleItem>
-                <ExampleItem>p</ExampleItem>
-                <ExampleItem>p</ExampleItem>
-                <ExampleItem>l</ExampleItem>
-                <ExampleItem>e</ExampleItem>
-              </ExampleList>
-            </ExplainItem>
-            <ExplainItem>
-              <p>
-                알파벳이 정답 단어에 들어가지 않는다면{" "}
-                <PointSpan color="#BDBDBD">회색</PointSpan>
-              </p>
-              <ExampleList>
-                <ExampleItem color="#BDBDBD">a</ExampleItem>
-                <ExampleItem>p</ExampleItem>
-                <ExampleItem>p</ExampleItem>
-                <ExampleItem>l</ExampleItem>
-                <ExampleItem>e</ExampleItem>
-              </ExampleList>
-            </ExplainItem>
-          </ExplainList>
-        </Explain>
+        <>
+          <Background onClick={() => explainOnClick()}></Background>
+          <Explain>
+            <XBtnDiv>
+              <XBtn onClick={() => explainOnClick()}>X</XBtn>
+            </XBtnDiv>
+            <h3>게임 설명</h3>
+            <ExplainList>
+              <ExplainItem>1. 기회는 총 6번!!!</ExplainItem>
+              <ExplainItem>
+                2. 타일 색깔에 따른 추측 가능
+                <p>
+                  알파벳이 정답 단어에 들어가고 순서까지 일치하면{" "}
+                  <PointSpan color="#59bb52">녹색</PointSpan>
+                </p>
+                <ExampleList>
+                  <ExampleItem color="#86E57F">a</ExampleItem>
+                  <ExampleItem>p</ExampleItem>
+                  <ExampleItem>p</ExampleItem>
+                  <ExampleItem>l</ExampleItem>
+                  <ExampleItem>e</ExampleItem>
+                </ExampleList>
+              </ExplainItem>
+              <ExplainItem>
+                <p>
+                  알파벳이 정답 단어에는 들어가지만 순서가 틀리면{" "}
+                  <PointSpan color="#eeff00">노란색</PointSpan>
+                </p>
+                <ExampleList>
+                  <ExampleItem color="#FFE400">a</ExampleItem>
+                  <ExampleItem>p</ExampleItem>
+                  <ExampleItem>p</ExampleItem>
+                  <ExampleItem>l</ExampleItem>
+                  <ExampleItem>e</ExampleItem>
+                </ExampleList>
+              </ExplainItem>
+              <ExplainItem>
+                <p>
+                  알파벳이 정답 단어에 들어가지 않는다면{" "}
+                  <PointSpan color="#BDBDBD">회색</PointSpan>
+                </p>
+                <ExampleList>
+                  <ExampleItem color="#BDBDBD">a</ExampleItem>
+                  <ExampleItem>p</ExampleItem>
+                  <ExampleItem>p</ExampleItem>
+                  <ExampleItem>l</ExampleItem>
+                  <ExampleItem>e</ExampleItem>
+                </ExampleList>
+              </ExplainItem>
+            </ExplainList>
+          </Explain>
+        </>
       )}
     </Container>
   );
@@ -76,6 +79,16 @@ const Container = styled.div`
     }
   }
 `;
+
+const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #80808076;
+`;
+
 const Explain = styled.div`
   position: absolute;
   top: 50%;

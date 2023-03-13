@@ -33,6 +33,7 @@ const Quiz = () => {
 
   return (
     <Container>
+      <Alert>알파벳을 모두 입력해주세요</Alert>
       <Wrap>
         <Question />
         <Answer />
@@ -63,5 +64,17 @@ const Wrap = styled.div`
   align-items: center;
   width: 100%;
 `;
+const Alert = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 50px;
+  background-color: #c0c0c0da;
+`
 
 export default Quiz;

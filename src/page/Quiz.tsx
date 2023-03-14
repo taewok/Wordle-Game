@@ -4,9 +4,11 @@ import styled, { keyframes } from "styled-components";
 import Answer from "../component/Answer";
 import KeyBoard from "../component/KeyBoard";
 import Question from "../component/Question";
+import Result from "../component/Result";
 
 const Quiz = () => {
   const [word, setWord] = useState<string>("");
+  const [result, setResult] = useState<boolean>(false);
 
   //단어를 랜덤으로 뽑아 word에 담는다
   useEffect(() => {
@@ -34,6 +36,7 @@ const Quiz = () => {
   return (
     <Container>
       <Alert className="alert">알파벳을 모두 입력해주세요</Alert>
+      <Result result={result}/>
       <Wrap>
         <Question />
         <Answer />
@@ -43,7 +46,7 @@ const Quiz = () => {
         <Answer />
         <Answer />
       </Wrap>
-      <KeyBoard word={word} />
+      <KeyBoard word={word} setResult={setResult}/>
     </Container>
   );
 };

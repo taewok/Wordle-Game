@@ -15,9 +15,10 @@ const KeyBoard = ({ word }: InfoProps) => {
   const keyBoardOnClick = (value: string) => {
     const input: NodeListOf<HTMLInputElement> =
       document.querySelectorAll(".input");
-    for (let i = 0; i < input.length; i++) {
+    for (let i = 0; i < 5; i++) {
       if (input[i].value === "") {
         input[i].value = value;
+        input[i].classList.add("vaild");
         break;
       }
     }
@@ -27,9 +28,6 @@ const KeyBoard = ({ word }: InfoProps) => {
   const deleteBtnOnClick = () => {
     const input: NodeListOf<HTMLInputElement> =
       document.querySelectorAll(".input");
-    for (let i = 0; i < 5; i++) {
-      console.log(input[i]);
-    }
     for (let i = input.length - 1; i >= 0; i--) {
       if (input[i].value !== "") {
         input[i].value = "";
@@ -43,6 +41,8 @@ const KeyBoard = ({ word }: InfoProps) => {
     const input: NodeListOf<HTMLInputElement> =
       document.querySelectorAll(".input");
     const form: NodeListOf<HTMLElement> = document.querySelectorAll(".form");
+    const alert: NodeListOf<HTMLElement> = document.querySelectorAll(".alert");
+
     let array: any[] = [];
     for (let i: number = 0; i < 5; i++) {
       array[i] = input[i].value;
@@ -50,7 +50,11 @@ const KeyBoard = ({ word }: InfoProps) => {
     //5칸 이하에 알파벳이 입력되어 있을 떄
     if (array.join("").length < 5) {
       form[0].classList.add("active");
-      setTimeout(() => form[0].classList.remove("active"), 500);
+      alert[0].classList.add("active");
+      setTimeout(() => {
+        form[0].classList.remove("active");
+        alert[0].classList.remove("active");
+      }, 1500);
     } else {
       for (let i: number = 0; i < 5; i++) {
         const key: any = document.querySelector(`#${input[i].value}`);
@@ -117,6 +121,7 @@ const KeyBoard = ({ word }: InfoProps) => {
 
 const Container = styled.div`
   @media screen and (max-width: 767px) {
+    padding-top: 5vw;
     width: 100%;
   }
 `;
@@ -136,7 +141,7 @@ const KeyItem = styled.ol`
   @media screen and (max-width: 767px) {
     margin: 5px 3px;
     width: 40px;
-    aspect-ratio: 1/1;
+    aspect-ratio: auto;
     border-radius: 5px;
     font-size: 1.5rem;
   }
@@ -153,7 +158,7 @@ const EnterBtn = styled(KeyItem)`
   width: 100px;
   aspect-ratio: 1/0.5;
   @media screen and (max-width: 767px) {
-    aspect-ratio: 1/0.5;
+    aspect-ratio: 1/0.3;
   }
 `;
 const DeleteBtn = styled(EnterBtn)`

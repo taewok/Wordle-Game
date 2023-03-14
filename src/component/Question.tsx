@@ -71,6 +71,7 @@ const Question = () => {
 };
 
 const Container = styled.div`
+  padding-top: 5vw;
   font-size: 2rem;
   svg {
     cursor: pointer;

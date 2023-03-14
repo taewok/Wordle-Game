@@ -4,9 +4,10 @@ import { MdOutlineBackspace } from "react-icons/md";
 
 type InfoProps = {
   word: string;
+  setResult: any;
 };
 
-const KeyBoard = ({ word }: InfoProps) => {
+const KeyBoard = ({ word, setResult }: InfoProps) => {
   const firstKeyList = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const secondKeyList = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const thirdKeyList = ["Z", "X", "C", "V", "B", "N", "M"];
@@ -31,6 +32,7 @@ const KeyBoard = ({ word }: InfoProps) => {
     for (let i = input.length - 1; i >= 0; i--) {
       if (input[i].value !== "") {
         input[i].value = "";
+        input[i].classList.remove("vaild");
         break;
       }
     }
@@ -42,7 +44,8 @@ const KeyBoard = ({ word }: InfoProps) => {
       document.querySelectorAll(".input");
     const form: NodeListOf<HTMLElement> = document.querySelectorAll(".form");
     const alert: NodeListOf<HTMLElement> = document.querySelectorAll(".alert");
-
+    const result: NodeListOf<HTMLElement> =
+      document.querySelectorAll(".result");
     let array: any[] = [];
     for (let i: number = 0; i < 5; i++) {
       array[i] = input[i].value;
@@ -56,20 +59,34 @@ const KeyBoard = ({ word }: InfoProps) => {
         alert[0].classList.remove("active");
       }, 1500);
     } else {
-      for (let i: number = 0; i < 5; i++) {
-        const key: any = document.querySelector(`#${input[i].value}`);
-        if (input[i].value === word[i]) {
-          key.style.background = "#86E57F";
-          input[i].style.background = "#86E57F";
-        } else if (word.includes(input[i].value)) {
-          key.style.background = "#FFE400";
-          input[i].style.background = "#FFE400";
-        } else {
-          key.style.background = "#7c7c7c";
-          input[i].style.background = "#BDBDBD";
+      if (array.join("") === word) {
+        for (let i: number = 0; i < 5; i++) {
+          input[i].classList.add("success");
         }
-        form[0].classList.remove("form");
-        input[i].classList.remove(`input`);
+        setTimeout(() => {
+          setResult(true);
+          result[0].style.display = "flex";
+        }, 1500);
+      } else {
+        for (let i: number = 0; i < 5; i++) {
+          const key: any = document.querySelector(`#${input[i].value}`);
+          if (input[i].value === word[i]) {
+            key.style.background = "#86E57F";
+            input[i].style.background = "#86E57F";
+          } else if (word.includes(input[i].value)) {
+            key.style.background = "#FFE400";
+            input[i].style.background = "#FFE400";
+          } else {
+            key.style.background = "#7c7c7c";
+            input[i].style.background = "#BDBDBD";
+          }
+          form[0].classList.remove("form");
+          input[i].classList.remove(`input`);
+        }
+        //마지막 기회였다면
+        if (form.length === 1) {
+          result[0].style.display = "flex";
+        }
       }
     }
   };

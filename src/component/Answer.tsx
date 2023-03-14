@@ -2,59 +2,13 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const Answer = () => {
-  const onWordInput = (): any => {
-    const input: NodeListOf<HTMLInputElement> =
-      document.querySelectorAll(".input");
-    for (let i = 0; i < input.length; i++) {
-      if (input[i].value.length > 0) {
-        input[i + 1].focus();
-        continue;
-      }
-    }
-  };
-
   return (
     <AnswerForm className="form">
-      <Input
-        minLength={1}
-        maxLength={1}
-        className="input"
-        onChange={() => onWordInput()}
-        required
-        disabled
-      />
-      <Input
-        minLength={1}
-        maxLength={1}
-        className="input"
-        onChange={() => onWordInput()}
-        required
-        disabled
-      />
-      <Input
-        minLength={1}
-        maxLength={1}
-        className="input"
-        onChange={() => onWordInput()}
-        required
-        disabled
-      />
-      <Input
-        minLength={1}
-        maxLength={1}
-        className="input"
-        onChange={() => onWordInput()}
-        required
-        disabled
-      />
-      <Input
-        minLength={1}
-        maxLength={1}
-        className="input"
-        onChange={() => onWordInput()}
-        required
-        disabled
-      />
+      <Input minLength={1} maxLength={1} className="input" required disabled />
+      <Input minLength={1} maxLength={1} className="input" required disabled />
+      <Input minLength={1} maxLength={1} className="input" required disabled />
+      <Input minLength={1} maxLength={1} className="input" required disabled />
+      <Input minLength={1} maxLength={1} className="input" required disabled />
     </AnswerForm>
   );
 };
@@ -116,7 +70,6 @@ const Input = styled.input`
   border-radius: 5px;
   text-align: center;
   font-size: 3rem;
-  cursor: pointer;
   &:valid {
     border: 3px solid black;
     animation: ${BigAndSmall} 0.5s forwards;

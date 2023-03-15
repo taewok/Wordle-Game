@@ -5,9 +5,10 @@ import { MdOutlineBackspace } from "react-icons/md";
 type InfoProps = {
   word: string;
   setResult: any;
+  setChallengeCount: any;
 };
 
-const KeyBoard = ({ word, setResult }: InfoProps) => {
+const KeyBoard = ({ word, setResult, setChallengeCount }: InfoProps) => {
   const firstKeyList = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const secondKeyList = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const thirdKeyList = ["Z", "X", "C", "V", "B", "N", "M"];
@@ -59,6 +60,7 @@ const KeyBoard = ({ word, setResult }: InfoProps) => {
         alert[0].classList.remove("active");
       }, 1500);
     } else {
+      setChallengeCount((num: any) => num + 1);
       if (array.join("") === word) {
         for (let i: number = 0; i < 5; i++) {
           input[i].classList.add("success");
